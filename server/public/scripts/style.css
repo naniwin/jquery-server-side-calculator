@@ -1,5 +1,26 @@
+#container {
+  display: grid;
+  border-style: groove;
+  background-color: antiquewhite;
+}
+h1 {
+  text-align: center;
+}
+body {
+  background-color: bisque;
+}
 .inputRow {
   float: left;
   width: auto;
   padding: 10px;
+}
+#result {
+  float: left;
+  width: auto;
+  padding: 20px;
+}
+#historyList {
+  float: left;
+  width: auto;
+  padding: 20px;
 }
