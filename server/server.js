@@ -19,6 +19,7 @@ app.get('/history', (req, res) => {
 app.post('/calculation', (req, res) => {
   let firstNumber = req.body.firstNumber;
   let secondNumber = req.body.secondNumber;
+  let operator = req.body.operator;
   let result = 0;
   // calculation using switch/case statements
   switch (operator) {
@@ -28,8 +29,23 @@ app.post('/calculation', (req, res) => {
     case '-':
       result = Number(firstNumber) - Number(secondNumber);
       break;
+    case '*':
+      result = Number(firstNumber) * Number(secondNumber);
+      break;
+    case '/':
+      result = Number(firstNumber) / Number(secondNumber);
+      break;
   }
+  let calculationStore = {
+    firstNumber: firstNumber,
+    secondNumber: secondNumber,
+    operator: operator,
+    result: result,
+  };
+  calculationBox.push(calculationStore);
+  res.send(calculationStore);
 });
+
 // spin up server
 app.listen(port, () => {
   console.log('server up on: ', port);
