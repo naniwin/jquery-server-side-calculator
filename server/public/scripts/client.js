@@ -10,6 +10,8 @@ function onReady() {
   // equal button to do calculation
   $('#equalButton').on('click', inputCalculation);
   $('#clearButton').on('click', clearInput);
+  // to show history after refresh
+  historyDisplay();
 }
 
 function inputCalculation() {
@@ -32,13 +34,28 @@ function inputCalculation() {
     // post on DOM
     let result = response.result;
     $('#result').html(`<h1>${result}</h1>`);
+    historyDisplay();
   });
 }
 // function to display entries
 function historyDisplay() {
   // GET route from server
   // loop and display past entries
+  // ajax?
+  $.ajax({
+    method: 'GET',
+    url: '/history',
+  }).then((response) => {
+    const el = $('#historyBox');
+    el.empty();
+    for (let i = 0; i < response.length; i++) {
+      el.append(
+        `<li>${response[i].firstNumber} ${response[i].operator} ${response[i].secondNumber} = ${response[i].result}</li>`
+      );
+    }
+  });
 }
+
 // function to clear the input and displaying result
 function clearInput() {
   $('#firstNumInput').val('');
