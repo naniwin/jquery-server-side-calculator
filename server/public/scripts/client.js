@@ -19,6 +19,7 @@ function inputCalculation() {
   let calculationStore = {
     firstNumber: firstNumber,
     secondNumber: secondNumber,
+    operator: operator,
   };
   // route input values to server to calculate
   // ajax to post route calculation to server.js
