@@ -34,6 +34,11 @@ function inputCalculation() {
     $('#result').html(`<h1>${result}</h1>`);
   });
 }
+// function to display entries
+function historyDisplay() {
+  // GET route from server
+  // loop and display past entries
+}
 // function to clear the input and displaying result
 function clearInput() {
   $('#firstNumInput').val('');
